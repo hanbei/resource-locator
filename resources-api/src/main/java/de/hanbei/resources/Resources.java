@@ -1,5 +1,3 @@
-package de.hanbei.resources;
-
 /* Copyright 2011 Florian Schulz
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +11,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. */
+package de.hanbei.resources;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -21,7 +20,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** @author fschulz */
+/**
+ * @author fschulz
+ */
 public class Resources {
 
     private List<ResourceLocator> resourceLocators;
@@ -79,14 +80,30 @@ public class Resources {
         }
     }
 
+    /**
+     * Add a ResourceLocator to the list of locators to search for resources from.
+     *
+     * @param resourceLocator The ResourceLocator to add to the search path.
+     */
     public void addResourceLocator(ResourceLocator resourceLocator) {
         resourceLocators.add(resourceLocator);
     }
+
+    /**
+     * Remove a ResourceLocator from the list of locators to search for resources.
+     *
+     * @param resourceLocator The ResourceLocator to remove from the list.
+     */
 
     public void removeResourceLocator(ResourceLocator resourceLocator) {
         resourceLocators.remove(resourceLocator);
     }
 
+    /**
+     * Set the list of resource locators to search resources from.
+     *
+     * @param resourceLocators The list of resource locators to search from.
+     */
     public void setResourceLocators(List<ResourceLocator> resourceLocators) {
         this.resourceLocators = resourceLocators;
     }
