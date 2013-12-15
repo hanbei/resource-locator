@@ -16,7 +16,7 @@ package de.hanbei.resources;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,12 +72,8 @@ public class Resources {
      * @return The first found resources with name <code>name</code>.
      * @throws ResourceNotFoundException if no matching resources could be found.
      */
-    public Reader getResourceAsReader(String name, String encoding) {
-        try {
-            return new InputStreamReader(getResourceAsStream(name), encoding);
-        } catch (UnsupportedEncodingException e) {
-            throw new ResourceNotFoundException("Encoding " + encoding + " for resources " + name + " not supported", e);
-        }
+    public Reader getResourceAsReader(String name, Charset encoding) {
+        return new InputStreamReader(getResourceAsStream(name), encoding);
     }
 
     /**

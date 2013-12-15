@@ -39,4 +39,42 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>fschulz</id>
+            <name>Florian Schulz</name>
+            <email>florian.schulz@hanbei.de</email>
+            <url>http://github.com/hanbei</url>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/hanbei/resource-locator/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:hanbei/resource-locator.git</connection>
+        <developerConnection>scm:git:git@github.com:hanbei/resource-locator.git</developerConnection>
+        <url>https://github.com/hanbei/mock-httpserver.git</url>
+      <tag>HEAD</tag>
+  </scm>
+	
+	<distributionManagement>
+        <repository>
+            <id>local_github</id>
+            <name>Github (Local)</name>
+            <url>file:///home/hanbei/projects/mvn-repo</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
 </project>

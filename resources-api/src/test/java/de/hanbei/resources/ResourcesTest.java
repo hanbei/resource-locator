@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -64,7 +65,7 @@ public class ResourcesTest {
 
     @Test
     public void testGetResourceAsReaderWithEncoding() throws Exception {
-        Reader stream = resources.getResourceAsReader("test", "ISO8859_1");
+        Reader stream = resources.getResourceAsReader("test", Charset.forName("ISO8859_1"));
         assertNotNull(stream);
         char[] buffer = new char[32];
         int bytesRead = stream.read(buffer);
@@ -75,7 +76,7 @@ public class ResourcesTest {
     @Test(expected = ResourceNotFoundException.class)
     public void testGetResourceAsReaderWithNotSupportedEncoding()
             throws Exception {
-        resources.getResourceAsReader("test", "ISO85167");
+        resources.getResourceAsReader("test2", Charset.forName("ISO8859_1"));
     }
 
     @Test
