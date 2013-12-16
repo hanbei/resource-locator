@@ -13,19 +13,23 @@ See the License for the specific language governing permissions and
 limitations under the License. */
 package de.hanbei.resources.http;
 
-import de.hanbei.resources.ResourceLocator;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
+import de.hanbei.resources.ResourceLocator;
 
 /**
  * @author fschulz
@@ -57,15 +61,19 @@ public class HttpResourceLocator implements ResourceLocator {
             HttpGet get = new HttpGet(resourceBase.resolve(resourceUri));
             HttpResponse response = client.execute(get);
             if (200 == response.getStatusLine().getStatusCode()) {
-                return response.getEntity().getContent();
+                HttpEntity entity = response.getEntity();
+                return new ByteArrayInputStream(EntityUtils.toByteArray(entity));
             } else {
                 LOGGER.warn("Resource {} not found on base {}", name, resourceBase);
                 return null;
             }
-        } catch (URISyntaxException e) {
+        }
+        catch(URISyntaxException e) {
             // exceptions are allowed as null will be returned.
-        } catch (ClientProtocolException e) {
-        } catch (IOException e) {
+        }
+        catch(ClientProtocolException e) {
+        }
+        catch(IOException e) {
         } finally {
             client.getConnectionManager().shutdown();
         }

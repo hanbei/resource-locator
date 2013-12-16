@@ -6,7 +6,7 @@
 	<groupId>de.hanbei</groupId>
 	<artifactId>resources</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>0.6.0-SNAPSHOT</version>
 	<modules>
 		<module>resources-api</module>
 		<module>resources-common</module>
@@ -73,7 +73,7 @@
         <repository>
             <id>local_github</id>
             <name>Github (Local)</name>
-            <url>file:///home/hanbei/projects/mvn-repo</url>
+            <url>file:///home/fschulz/tmp/mvn-repo</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>
